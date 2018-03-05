@@ -76,7 +76,6 @@ class Server is TCPConnectionNotify
     _out.print("server closed")
     let bytes_per_second = bytes_received.i64() / (ended_at - started_at)
     _out.print("Bytes received per second: " + bytes_per_second.string())
-    _out.print("Bytes received: " + bytes_received.string())
 
   fun ref connect_failed(conn: TCPConnection ref) =>
     _out.print("connect failed")
