@@ -4,6 +4,12 @@ Simple framed tcp server using `TCPConnection`. Reads bytes in a framed format o
 
 Outputs bytes received per second when the connection is closed.
 
+## Build
+
+```bash
+ponyc
+```
+
 ## Start
 
 ```bash
