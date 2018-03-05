@@ -4,4 +4,8 @@ Simple framed tcp server using `TCPConnection`. Reads bytes in a framed format o
 
 Outputs bytes received per second when the connection is closed.
 
+## Start
 
+```bash
+sudo cset proc -s user -e numactl -- -C 3,17 chrt -f 80 ./framed-using-expect --ponythreads=1 --ponynoblock --ponypinasio
+```

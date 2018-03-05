@@ -45,6 +45,7 @@ class Server is TCPConnectionNotify
 
   fun ref accepted(conn: TCPConnection ref) =>
     _out.print("connection accepted")
+    conn.expect(4)
     started_at = Time.seconds()
 
   fun ref received(conn: TCPConnection ref, data: Array[U8] iso,
@@ -72,6 +73,7 @@ class Server is TCPConnectionNotify
     _out.print("server closed")
     let bytes_per_second = bytes_received.i64() / (ended_at - started_at)
     _out.print("Bytes received per second: " + bytes_per_second.string())
+    _out.print("Bytes received: " + bytes_received)
 
   fun ref connect_failed(conn: TCPConnection ref) =>
     _out.print("connect failed")
