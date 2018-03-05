@@ -35,8 +35,8 @@ class Listener is TCPListenNotify
 
 class Server is TCPConnectionNotify
   let _out: OutStream
-  var started_at: U64 = 0
-  var ended_at: U64 = 0
+  var started_at: I64 = 0
+  var ended_at: I64 = 0
   var bytes_received: USize = 0
 
   new iso create(out: OutStream) =>
@@ -44,7 +44,7 @@ class Server is TCPConnectionNotify
 
   fun ref accepted(conn: TCPConnection ref) =>
     _out.print("connection accepted")
-    started_at = Time.nanos()
+    started_at = Time.seconds()
 
   fun ref received(conn: TCPConnection ref, data: Array[U8] iso,
     times: USize): Bool
@@ -53,10 +53,10 @@ class Server is TCPConnectionNotify
     true
 
   fun ref closed(conn: TCPConnection ref) =>
-    ended_at = Time.nanos()
+    ended_at = Time.seconds()
     _out.print("server closed")
-    let bytes_per_nano = bytes_received.u64() / (ended_at - started_at)
-    _out.print("bytes_per_nano: " + bytes_per_nano.string())
+    let bytes_per_second = bytes_received.i64() / (ended_at - started_at)
+    _out.print("Bytes received per second: " + bytes_per_second.string())
 
   fun ref connect_failed(conn: TCPConnection ref) =>
     _out.print("connect failed")
