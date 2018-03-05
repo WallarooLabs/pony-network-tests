@@ -4,7 +4,10 @@ use "time"
 actor Main
   new create(env: Env) =>
     try
-      TCPListener(env.root as AmbientAuth, Listener(env.out))
+      TCPListener(env.root as AmbientAuth,
+        Listener(env.out),
+        "127.0.0.1",
+        "7669")
     else
       env.out.print("unable to use the network")
     end

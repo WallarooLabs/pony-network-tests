@@ -4,6 +4,8 @@ Simple framed tcp server using `TCPConnection`. Reads bytes in a framed format o
 
 Outputs bytes received per second when the connection is closed.
 
+Starts up bound to 127.0.0.1 port 7669.
+
 ## Build
 
 ```bash
