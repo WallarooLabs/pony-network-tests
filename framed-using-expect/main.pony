@@ -6,7 +6,7 @@ actor Main
     try
       TCPListener(env.root as AmbientAuth,
         Listener(env.out),
-        "127.0.0.1",
+        "",
         "7669")
     else
       env.out.print("unable to use the network")

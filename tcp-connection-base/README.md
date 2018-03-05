@@ -2,7 +2,7 @@
 
 Simple tcp server using `TCPConnection` that reads bytes off the network as fast as possible while recording total time it has been running. Outputs bytes received per second when the connection is closed.
 
-Starts up bound to 127.0.0.1 port 7669.
+Starts up bound to all interfaces at port 7669.
 
 ## Build
 
