@@ -58,7 +58,7 @@ class Sender is TCPConnectionNotify
 primitive FramedDataCreator
   fun apply(msgs: USize = 10, length: U32 = 48): Array[U8] val =>
     let s = msgs * (length.usize() + 4)
-    let a: Array[U8] iso = recover iso Array[U8].init(7, s) end
+    let a: Array[U8] iso = recover iso Array[U8].init(87, s) end
     let h = header_bytes(length)
 
     for i in Range(0, msgs) do
