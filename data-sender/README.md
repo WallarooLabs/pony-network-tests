@@ -11,5 +11,5 @@ ponyc
 ## Start
 
 ```bash
-./data-sender IP_TO_CONNECT_TO PORT_TO_CONNECT_TO MSGS_PER_SEND
+sudo cset proc -s user -e numactl -- -C 2,17 chrt -f 80 ./data-sender wallaroo-leader-1 7669 1000 --ponythreads=1 --ponynoblock --ponypinasio
 ```
