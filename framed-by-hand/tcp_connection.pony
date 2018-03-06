@@ -814,7 +814,7 @@ actor TCPConnection
             _readable = false
             @pony_asio_event_resubscribe_read(_event)
             return
-          | _next_size =>
+          | (_read_buf.size() - _read_buf_offset) =>
             // Increase the read buffer size.
             _next_size = _max_size.min(_next_size * 2)
           end
