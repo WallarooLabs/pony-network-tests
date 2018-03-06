@@ -62,7 +62,7 @@ primitive FramedDataCreator
     let h = header_bytes(length)
 
     for i in Range(0, msgs) do
-      let x = i * length.usize()
+      let x = i * (length.usize() + 4)
       try
         a(x)? = h(0)?
         a(x + 1)? = h(1)?
