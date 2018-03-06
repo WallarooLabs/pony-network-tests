@@ -46,12 +46,6 @@ class Sender is TCPConnectionNotify
     conn.write(_data_chunk)
     data
 
-  fun ref throttled(conn: TCPConnection ref) =>
-    _out.print("Throttling received")
-
-  fun ref unthrottled(conn: TCPConnection ref) =>
-    _out.print("Unthrottling received")
-
   fun ref connect_failed(conn: TCPConnection ref) =>
     _err.print("Unable to connect")
 
