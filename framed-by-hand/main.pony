@@ -53,7 +53,6 @@ class Server is TCPConnectionNotify
   fun ref received(conn: TCPConnection ref, data: Array[U8] iso,
     times: USize): Bool
   =>
-    //@printf[I32]("received got %d bytes\n".cstring(), data.size())
     bytes_received = bytes_received + data.size()
 
     if _header then
@@ -67,8 +66,6 @@ class Server is TCPConnectionNotify
         _out.print("Error reading header")
       end
     else
-      //@printf[I32]("BODY: |%s|\n".cstring(), String.from_array(consume data).cstring())
-     // _out.print("body: |" + String.from_array(consume data) + "|")
       conn.expect(4)
       _header = true
     end
