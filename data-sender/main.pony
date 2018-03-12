@@ -55,11 +55,19 @@ primitive FramedDataCreator
     let a: Array[U8] iso = recover iso Array[U8].init(87, s) end
     let h = header_bytes(length)
 
-    recover
-      let a' = consume ref a
-      h.copy_to(a', 0, 0, 4)
-      a'
+    for i in Range(0, msgs) do
+      let x = i * (length.usize() + 4)
+      try
+        a(x)? = h(0)?
+        a(x + 1)? = h(1)?
+        a(x + 2)? = h(2)?
+        a(x + 3)? = h(3)?
+      else
+        @exit[None](U8(1))
+      end
     end
+
+    consume a
 
   fun header_bytes(length: U32): Array[U8] val =>
     Bytes.from_u32(length)
